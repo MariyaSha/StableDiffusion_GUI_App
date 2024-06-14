@@ -15,6 +15,7 @@ body {
     padding: 10px;
     border-radius: 10px;
     border-style: None;
+    text-align: center;
 }
 
 #generate_btn {

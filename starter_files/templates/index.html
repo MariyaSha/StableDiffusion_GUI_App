@@ -13,18 +13,19 @@
         <br>
         <input id="prompt" type="text" name="prompt">
         <br>
-        <input id="generate_btn" type="submit" value="GENERATE">
+        <input id="generate_btn" type="submit" value="GENERATE" onclick="processing();">
     </form>
     <form action="supersample" method="post">
-        {% for i in myrange %}
-            <img class="generated" src="/static/images/placeholder_image.png">
+        {% for i in prompt_images %}
+            <img class="generated" src="/static/images/{{i}}">
         {% endfor %}
         <br>
-        {% for i in myrange %}
-        <button class="save_btn" type="submit" value="{{i}}" name="tag">
+        {% for i in btn_range %}
+        <button class="save_btn" type="submit" value="{{i}}" name="tag" onclick="saving({{i}});">
         SAVE HD IMAGE
         </button>
         {% endfor %}
     </form>
+    <script type=text/javascript src="{{ url_for('static', filename='js/main.js') }}"></script>            
 </body>
 </html>

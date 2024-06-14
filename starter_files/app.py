@@ -1,23 +1,48 @@
 from flask import Flask, render_template, request
+from PIL import Image as PIL_Image
+import secrets
+
 app = Flask(__name__)
+# generate random secret key
+app.config['SECRET_KEY'] = secrets.token_hex(16)
 
 @app.route('/')
 def hello():
-	return render_template("index.html", myrange=range(3))
+    # home page
+    return render_template(
+        "index.html", 
+        btn_range = range(3), 
+        prompt_images = ["placeholder_image.png" for i in range(3)]
+    )
 
 @app.route('/prompt', methods=['POST', 'GET'])
 def prompt():
-    prompt = request.form['prompt']
+    # generate images from user prompt
     print("user prompt received:", prompt)
-    return render_template("index.html", myrange=range(3))
+    
+    return render_template(
+        "index.html", 
+        btn_range = range(3), 
+        prompt_images = ["demo_img" + str(i) + ".png" for i in range(3)]
+    )
 
 @app.route('/supersample', methods=['POST', 'GET'])
 def supersample():
-    tag = request.form['tag']
-    print("save button", tag, "was clicked!!!")
-    return render_template("index.html", myrange=range(3))
+    # enlarge and save prompt image in high quality
+    print("save button", tag, "was clicked!")
+
+    return render_template(
+        "index.html", 
+        btn_range = range(3), 
+        prompt_images = ["demo_img" + str(i) + ".png" for i in range(3)]
+    )
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8000, debug=True)
+    # run application
+    app.run(
+        host = '0.0.0.0', 
+        port = 8000, 
+        debug = True
+    )
     
 
