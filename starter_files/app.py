@@ -18,7 +18,7 @@ def hello():
 @app.route('/prompt', methods=['POST', 'GET'])
 def prompt():
     # generate images from user prompt
-    print("user prompt received:", prompt)
+    print("user prompt received:", request.form['prompt_input'])
     
     return render_template(
         "index.html", 
