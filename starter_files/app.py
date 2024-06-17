@@ -23,7 +23,7 @@ def prompt():
     return render_template(
         "index.html", 
         btn_range = range(3), 
-        prompt_images = ["demo_img" + str(i) + ".png" for i in range(3)]
+        prompt_images = ["placeholder_image.png" for i in range(3)]
     )
 
 @app.route('/supersample', methods=['POST', 'GET'])
@@ -34,7 +34,7 @@ def supersample():
     return render_template(
         "index.html", 
         btn_range = range(3), 
-        prompt_images = ["demo_img" + str(i) + ".png" for i in range(3)]
+        prompt_images = ["placeholder_image.png" for i in range(3)]
     )
 
 if __name__ == '__main__':
