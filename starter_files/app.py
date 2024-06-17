@@ -29,7 +29,7 @@ def prompt():
 @app.route('/supersample', methods=['POST', 'GET'])
 def supersample():
     # enlarge and save prompt image in high quality
-    print("save button", tag, "was clicked!")
+    print("save button", save_btn, "was clicked!")
 
     return render_template(
         "index.html", 
