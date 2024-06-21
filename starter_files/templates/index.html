@@ -17,7 +17,7 @@
     </form>
     <form action="supersample" method="post">
         {% for i in prompt_images %}
-            <img class="generated" src="/static/images/{{i}}">
+            <img class="generated" src="{{i}}">
         {% endfor %}
         <br>
         {% for i in btn_range %}

@@ -1,18 +1,21 @@
 from flask import Flask, render_template, request
-from PIL import Image as PIL_Image
+from PIL import Image
 import secrets
 
 app = Flask(__name__)
+
 # generate random secret key
 app.config['SECRET_KEY'] = secrets.token_hex(16)
 
 @app.route('/')
 def hello():
     # home page
+    
     return render_template(
         "index.html", 
+        # pass variables into the HTML template
         btn_range = range(3), 
-        prompt_images = ["placeholder_image.png" for i in range(3)]
+        prompt_images = ["/static/images/placeholder_image.png" for i in range(3)]
     )
 
 @app.route('/prompt', methods=['POST', 'GET'])
@@ -22,8 +25,9 @@ def prompt():
     
     return render_template(
         "index.html", 
+        # pass variables into the HTML template
         btn_range = range(3), 
-        prompt_images = ["placeholder_image.png" for i in range(3)]
+        prompt_images = ["/static/images/placeholder_image.png" for i in range(3)]
     )
 
 @app.route('/supersample', methods=['POST', 'GET'])
@@ -33,8 +37,9 @@ def supersample():
 
     return render_template(
         "index.html", 
+        # pass variables into the HTML template
         btn_range = range(3), 
-        prompt_images = ["placeholder_image.png" for i in range(3)]
+        prompt_images = ["/static/images/placeholder_image.png" for i in range(3)]
     )
 
 if __name__ == '__main__':
@@ -43,6 +48,5 @@ if __name__ == '__main__':
         host = '0.0.0.0', 
         port = 8000, 
         debug = True
-    )
-    
+    )   
 
